@@ -11,38 +11,24 @@ export default function KontakPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="bg-[#1B4332] pt-20 pb-12">
-        <div className="container mx-auto px-4">
-          <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
-            Hubungi Kami
-          </h1>
-          <nav aria-label="Breadcrumb">
-            <ol className="flex items-center gap-2 text-sm text-green-200">
+      <section className="bg-white pt-20 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <nav className="mb-3" aria-label="Breadcrumb">
+            <ol className="flex items-center gap-2 text-sm text-gray-400">
               <li>
-                <a href="/" className="hover:text-white transition-colors">
+                <a href="/" className="hover:text-[#E5A100] transition-colors">
                   Beranda
                 </a>
               </li>
-              <li aria-hidden="true">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </li>
-              <li className="text-white font-medium" aria-current="page">
+              <li aria-hidden="true">/</li>
+              <li className="text-[#1B4332] font-medium" aria-current="page">
                 Hubungi Kami
               </li>
             </ol>
           </nav>
+          <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-[#1B4332]">
+            Hubungi Kami
+          </h1>
         </div>
       </section>
 

@@ -130,33 +130,25 @@ export default function LayananPage() {
   return (
     <main>
       {/* Page Header */}
-      <section
-        className="pt-20"
-        style={{ backgroundColor: "#1B4332" }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <nav className="mb-4" aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-2 text-sm">
+      <section className="bg-white pt-20 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <nav className="mb-3" aria-label="Breadcrumb">
+            <ol className="flex items-center gap-2 text-sm text-gray-400">
               <li>
-                <Link
-                  href="/"
-                  className="text-green-200 hover:text-white transition-colors"
-                >
+                <Link href="/" className="transition-colors hover:text-[#E5A100]">
                   Beranda
                 </Link>
               </li>
-              <li className="text-green-400" aria-hidden="true">
-                /
-              </li>
-              <li className="text-white font-medium" aria-current="page">
+              <li aria-hidden="true">/</li>
+              <li className="font-medium text-[#1B4332]" aria-current="page">
                 Layanan Kami
               </li>
             </ol>
           </nav>
-          <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+          <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B4332]">
             Layanan Kami
           </h1>
-          <p className="mt-4 text-green-100 text-lg max-w-2xl">
+          <p className="mt-3 text-gray-600 text-lg max-w-2xl">
             Solusi katering profesional untuk berbagai kebutuhan Anda — dari
             catering harian, buffet event, hingga nasi box praktis.
           </p>

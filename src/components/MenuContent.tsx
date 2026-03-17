@@ -125,21 +125,21 @@ export default function MenuContent() {
   return (
     <>
       {/* Page Header */}
-      <section className="bg-[#1B4332] pt-20 pb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-white pt-20 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-green-200 mb-4">
-            <Link href="/" className="hover:text-white transition-colors">
+          <nav className="flex items-center gap-2 text-sm text-gray-400 mb-3">
+            <Link href="/" className="hover:text-[#E5A100] transition-colors">
               Beranda
             </Link>
             <span>/</span>
-            <span className="text-white font-medium">Daftar Menu</span>
+            <span className="text-[#1B4332] font-medium">Daftar Menu</span>
           </nav>
 
-          <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3">
+          <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B4332]">
             Daftar Menu
           </h1>
-          <p className="text-green-100 text-base sm:text-lg max-w-2xl">
+          <p className="mt-3 text-gray-600 text-base sm:text-lg max-w-2xl">
             Hidangan khas nusantara yang lezat dan bergizi, disiapkan dengan bahan-bahan segar
             pilihan dan bumbu rempah terbaik.
           </p>

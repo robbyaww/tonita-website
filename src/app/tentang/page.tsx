@@ -75,29 +75,24 @@ export default function TentangPage() {
   return (
     <>
       {/* Page Header */}
-      <section className="bg-[#1B4332] pt-20">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <h1 className="font-heading text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-            Tentang Kami
-          </h1>
-          <nav className="mt-4" aria-label="Breadcrumb">
-            <ol className="flex items-center gap-2 text-sm text-green-200">
+      <section className="bg-white pt-20 border-b border-gray-200">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <nav className="mb-3" aria-label="Breadcrumb">
+            <ol className="flex items-center gap-2 text-sm text-gray-400">
               <li>
-                <Link
-                  href="/"
-                  className="transition-colors hover:text-[#E5A100]"
-                >
+                <Link href="/" className="transition-colors hover:text-[#E5A100]">
                   Beranda
                 </Link>
               </li>
-              <li aria-hidden="true" className="text-green-400">
-                /
-              </li>
-              <li className="font-medium text-white" aria-current="page">
+              <li aria-hidden="true">/</li>
+              <li className="font-medium text-[#1B4332]" aria-current="page">
                 Tentang Kami
               </li>
             </ol>
           </nav>
+          <h1 className="font-heading text-3xl font-bold text-[#1B4332] sm:text-4xl lg:text-5xl">
+            Tentang Kami
+          </h1>
         </div>
       </section>
 

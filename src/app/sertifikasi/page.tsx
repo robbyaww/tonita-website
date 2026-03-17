@@ -102,29 +102,21 @@ export default function SertifikasiPage() {
   return (
     <>
       {/* Page Header */}
-      <section
-        className="pt-20 pb-14"
-        style={{ backgroundColor: '#1B4332' }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="bg-white pt-20 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Breadcrumb */}
-          <nav className="flex justify-center items-center gap-2 text-sm mb-4" aria-label="Breadcrumb">
-            <Link
-              href="/"
-              className="text-green-300 hover:text-white transition-colors duration-200"
-            >
+          <nav className="flex items-center gap-2 text-sm text-gray-400 mb-3" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-[#E5A100] transition-colors duration-200">
               Beranda
             </Link>
-            <span className="text-green-500">/</span>
-            <span className="text-white font-medium">Sertifikasi &amp; Legalitas</span>
+            <span>/</span>
+            <span className="text-[#1B4332] font-medium">Sertifikasi &amp; Legalitas</span>
           </nav>
 
-          <h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white font-heading leading-tight"
-          >
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1B4332] font-heading leading-tight">
             Sertifikasi &amp; Legalitas
           </h1>
-          <p className="mt-4 text-green-200 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="mt-3 text-gray-600 text-base sm:text-lg max-w-2xl">
             Bukti nyata komitmen kami terhadap standar kualitas, keamanan pangan, dan kehalalan yang terverifikasi.
           </p>
         </div>
