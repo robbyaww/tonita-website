@@ -20,9 +20,10 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -46,36 +47,51 @@ export default function Navbar() {
     return pathname.startsWith(href);
   };
 
+  const isHomepage = pathname === "/";
+  const showTransparent = isHomepage && !isScrolled && !isMobileMenuOpen;
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
-        isScrolled ? "shadow-md" : "shadow-sm"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        showTransparent
+          ? "bg-transparent"
+          : "bg-white shadow-md"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link
             href="/"
             className="flex items-center gap-3 group flex-shrink-0"
             aria-label="PT. Tonita Dwi Generasi - Beranda"
           >
-            {/* Logo Circle */}
             <div
-              className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 transition-transform duration-200 group-hover:scale-105"
-              style={{ backgroundColor: "#1B4332" }}
+              className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 transition-all duration-300 group-hover:scale-110 ${
+                showTransparent
+                  ? "bg-white/20 backdrop-blur-sm border border-white/30"
+                  : ""
+              }`}
+              style={!showTransparent ? { backgroundColor: "#1B4332" } : undefined}
             >
-              <span style={{ color: "#E5A100" }}>TDG</span>
+              <span style={{ color: "#E5A100" }} className="font-bold">
+                TDG
+              </span>
             </div>
-            {/* Brand Name */}
             <div className="hidden sm:flex flex-col leading-tight">
               <span
-                className="font-heading font-bold text-base leading-none"
-                style={{ color: "#1B4332" }}
+                className={`font-heading font-bold text-base leading-none transition-colors duration-300 ${
+                  showTransparent ? "text-white" : ""
+                }`}
+                style={!showTransparent ? { color: "#1B4332" } : undefined}
               >
                 Tonita Catering
               </span>
-              <span className="text-xs text-gray-500 leading-none mt-0.5">
+              <span
+                className={`text-xs leading-none mt-0.5 transition-colors duration-300 ${
+                  showTransparent ? "text-white/70" : "text-gray-500"
+                }`}
+              >
                 PT. Tonita Dwi Generasi
               </span>
             </div>
@@ -87,33 +103,25 @@ export default function Navbar() {
               <li key={href}>
                 <Link
                   href={href}
-                  className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 group ${
-                    isActive(href)
-                      ? "text-white"
-                      : "text-gray-700 hover:text-white"
+                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    showTransparent
+                      ? isActive(href)
+                        ? "text-white bg-white/20 backdrop-blur-sm"
+                        : "text-white/90 hover:text-white hover:bg-white/15"
+                      : isActive(href)
+                        ? "text-white"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
                   }`}
                   style={
-                    isActive(href)
+                    !showTransparent && isActive(href)
                       ? { backgroundColor: "#1B4332" }
                       : undefined
                   }
-                  onMouseEnter={(e) => {
-                    if (!isActive(href)) {
-                      (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                        "#1B4332";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActive(href)) {
-                      (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                        "";
-                    }
-                  }}
                 >
                   {label}
                   {isActive(href) && (
                     <span
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
+                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
                       style={{ backgroundColor: "#E5A100" }}
                     />
                   )}
@@ -128,8 +136,12 @@ export default function Navbar() {
               href="https://wa.me/6281951366663"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95"
-              style={{ backgroundColor: "#E5A100" }}
+              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95 ${
+                showTransparent
+                  ? "bg-white text-gray-900 hover:bg-white/90 shadow-lg"
+                  : "text-white hover:opacity-90"
+              }`}
+              style={!showTransparent ? { backgroundColor: "#E5A100" } : undefined}
             >
               <svg
                 className="w-4 h-4"
@@ -147,24 +159,16 @@ export default function Navbar() {
           {/* Hamburger Button (Mobile) */}
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-inset"
-            style={{ ["--tw-ring-color" as string]: "#1B4332" }}
+            className={`md:hidden inline-flex items-center justify-center p-2 rounded-lg transition-all duration-300 focus:outline-none ${
+              showTransparent
+                ? "text-white hover:bg-white/15"
+                : "text-gray-700 hover:bg-gray-100"
+            }`}
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
             aria-label={isMobileMenuOpen ? "Tutup menu" : "Buka menu"}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor =
-                "#1B4332";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = "";
-            }}
           >
-            <span className="sr-only">
-              {isMobileMenuOpen ? "Tutup menu" : "Buka menu"}
-            </span>
-            {/* Animated hamburger icon */}
             <div className="w-6 h-6 flex flex-col justify-center items-center gap-1.5 relative">
               <span
                 className={`block w-6 h-0.5 bg-current transition-all duration-300 origin-center ${
@@ -194,37 +198,17 @@ export default function Navbar() {
         }`}
         aria-hidden={!isMobileMenuOpen}
       >
-        <div
-          className="border-t px-4 py-4 space-y-1"
-          style={{ borderColor: "#e5e7eb", backgroundColor: "#f9fafb" }}
-        >
-          {navLinks.map(({ href, label }, index) => (
+        <div className="bg-white border-t border-gray-100 px-4 py-4 space-y-1 shadow-lg">
+          {navLinks.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
-              className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                 isActive(href)
                   ? "text-white"
-                  : "text-gray-700 hover:text-white"
+                  : "text-gray-700 hover:bg-gray-50"
               }`}
-              style={{
-                backgroundColor: isActive(href) ? "#1B4332" : undefined,
-                transitionDelay: isMobileMenuOpen
-                  ? `${index * 40}ms`
-                  : "0ms",
-              }}
-              onMouseEnter={(e) => {
-                if (!isActive(href)) {
-                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                    "#1B4332";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isActive(href)) {
-                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                    "";
-                }
-              }}
+              style={isActive(href) ? { backgroundColor: "#1B4332" } : undefined}
             >
               {isActive(href) && (
                 <span
